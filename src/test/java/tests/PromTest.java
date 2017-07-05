@@ -22,32 +22,24 @@ import pages.MainPage;
 import static org.openqa.selenium.OutputType.*;
 
 public class PromTest extends TestBase{
-    /*WebDriver wd;*/
+    //WebDriver wd;
     private MainPage mainPage;
 
 
-
-    
-    @BeforeMethod
-    public void setUp() throws Exception {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "none");
-        wd = new FirefoxDriver(capabilities);
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-    }
-    
     @Test
     public void testProm() throws AWTException, InterruptedException {
 
-        wd.get("https://prom.ua/");
+        app.wd.get("https://prom.ua/");
         Thread.sleep(10000);
 
 
-        mainPage = new MainPage(wd);
+        mainPage = new MainPage();
         mainPage.moveToRegistration();
         mainPage.clickOnCustomerButton();
-        Actions actions = new Actions(wd);
+        mainPage.clickOnCustomerButton();
+        Thread.sleep(10000);
+
+        /*Actions actions = new Actions(wd);
         WebElement reg = wd.findElement(By.xpath("//span[@data-qaid='reg_element']"));
         actions.moveToElement(reg, 1, 1).build().perform();
 
@@ -133,14 +125,11 @@ public class PromTest extends TestBase{
         System.out.println(7);
         Thread.sleep(5000);
         wd.findElement(By.cssSelector("//span[@data-qaid='close_btn']")).click();
-        Thread.sleep(5000);
+        Thread.sleep(5000);*/
     }
 
 
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
-    }
+
     
     public static boolean isAlertPresent(FirefoxDriver wd) {
         try {
