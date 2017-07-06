@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+
+    <suite name="AuroraTests">
+        <test name="Prom">
+
+            <parameter name="username" value="testUserName"/>
+            <parameter name="email" value="testEmail"/>
+
+            <classes>
+                <class name="tests.PromTest" />
+            </classes>
+        </test>
+    </suite>
+
+
